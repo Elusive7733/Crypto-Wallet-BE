@@ -1,0 +1,28 @@
+### login
+# @name login 
+POST http://localhost:5000/auth/login
+Content-Type: application/json
+
+{
+    "phoneNumber": "03362559863",
+    "password": "123"
+}
+###
+@generalToken = {{login.response.body.token}}
+
+
+### createCoin
+Post http://localhost:5000/coin/
+Content-Type: application/json
+Authorization: Bearer {{generalToken}}
+
+{
+    "name": "Cosmos",
+    "acronym": "ATOM"
+}
+###
+
+### getWallet
+GET http://localhost:5000/coin/
+Content-Type: application/json
+Authorization: Bearer {{generalToken}}

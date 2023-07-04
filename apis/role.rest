@@ -1,0 +1,50 @@
+### login
+# @name login 
+POST http://localhost:5000/auth/login
+Content-Type: application/json
+
+{
+    "phoneNumber": "1234",
+    "password": "123"
+}
+###
+@generalToken = {{login.response.body.token}}
+
+
+### createRole
+Post http://localhost:5000/role/
+Content-Type: application/json
+Authorization: Bearer {{generalToken}}
+
+{
+    "role": "userasad"
+}
+###
+
+
+### getRole
+GET http://localhost:5000/role/
+Content-Type: application/json
+Authorization: Bearer {{generalToken}}
+
+### updateRole
+PUT http://localhost:5000/role/62490a0a80e382a5d3b252d2
+Content-Type: application/json
+Authorization: Bearer {{generalToken}}
+
+{
+    "role": "user"
+}
+
+###
+
+
+### deleteRole
+DELETE http://localhost:5000/role/
+Content-Type: application/json
+Authorization: Bearer {{generalToken}}
+
+{
+    "role": "userasd"
+}
+###

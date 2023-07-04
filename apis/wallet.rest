@@ -1,0 +1,59 @@
+### login
+# @name login 
+POST http://localhost:5000/auth/login
+Content-Type: application/json
+
+{
+    "phoneNumber": "999",
+    "password": "123"
+}
+###
+@generalToken = {{login.response.body.token}}
+
+### getWallet
+GET http://localhost:5000/wallet/
+Content-Type: application/json
+Authorization: Bearer {{generalToken}}
+
+
+### buyCoin
+PUT http://localhost:5000/wallet/buy
+Content-Type: application/json
+Authorization: Bearer {{generalToken}}
+
+{
+    "name": "Bitcoin",
+    "quantity": "0.1",
+    "price": "0"
+}
+
+###
+
+### sellCoin
+PUT http://localhost:5000/wallet/sell
+Content-Type: application/json
+Authorization: Bearer {{generalToken}}
+
+{
+    "name": "Bitcoin",
+    "acronym": "ETH",
+    "quantity": "0.0005",
+    "price": "10000"
+}
+
+###
+
+### sendCoin
+PUT http://localhost:5000/wallet/send
+Content-Type: application/json
+Authorization: Bearer {{generalToken}}
+
+{
+    "acronym": "ETH",
+    "quantity": "0.00005",
+    "type": "send",
+    "terminal": "123"
+}
+
+###
+

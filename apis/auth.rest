@@ -1,0 +1,37 @@
+###
+POST http://localhost:5000/auth/register 
+Content-Type: application/json
+
+{
+    "name": "Abdullah",
+    "phoneNumber": "123",
+    "password": "123",
+    "confirmPassword": "123",
+    "email": "abc@abc",
+    "role": "admin"
+}
+
+### login
+# @name login 
+POST http://localhost:5000/auth/login
+Content-Type: application/json
+
+{
+    "phoneNumber": "123",
+    "password": "123"
+}
+###
+@generalToken = {{login.response.body.token}}
+
+
+### login
+# @name login 
+POST https://crypto-wallet-backend.herokuapp.com/auth/login
+Content-Type: application/json
+
+{
+    "phoneNumber": "123",
+    "password": "123"
+}
+###
+@generalToken = {{login.response.body.token}}

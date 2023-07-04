@@ -1,0 +1,31 @@
+### login
+# @name login 
+POST http://localhost:5000/auth/login
+Content-Type: application/json
+
+{
+    "phoneNumber": "123",
+    "password": "123"
+}
+###
+@generalToken = {{login.response.body.token}}
+
+
+### createTransaction
+Post http://localhost:5000/transaction/
+Content-Type: application/json
+Authorization: Bearer {{generalToken}}
+
+{
+    "acronym": "ATOM",
+    "quantity": "173",
+    "type": "send",
+    "terminal": "123"
+}
+###
+
+
+### getAllTransaction
+GET http://localhost:5000/transaction/
+Content-Type: application/json
+Authorization: Bearer {{generalToken}}

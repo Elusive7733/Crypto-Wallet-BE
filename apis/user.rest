@@ -1,0 +1,16 @@
+### login
+# @name login 
+POST http://localhost:5000/auth/login
+Content-Type: application/json
+
+{
+    "phoneNumber": "1234",
+    "password": "123"
+}
+###
+@generalToken = {{login.response.body.token}}
+
+### getUser
+GET http://localhost:5000/user/
+Content-Type: application/json
+Authorization: Bearer {{generalToken}}
